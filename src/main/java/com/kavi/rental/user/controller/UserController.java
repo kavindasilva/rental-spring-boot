@@ -12,11 +12,13 @@ import java.util.List;
 
 @RestController
 public class UserController {
-    @Resource
     private UserService userService;
-
-    @Resource
     private UserDTOMapper userDTOMapper;
+
+    UserController (final UserDTOMapper userDTOMapper, final UserService userService) {
+        this.userDTOMapper = userDTOMapper;
+        this.userService = userService;
+    }
 
     @RequestMapping("/")
     public String hello()
