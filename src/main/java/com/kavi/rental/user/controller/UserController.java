@@ -1,13 +1,11 @@
 package com.kavi.rental.user.controller;
 
 import com.kavi.rental.user.dto.UserDTO;
-import com.kavi.rental.user.dto.UserDTOMapper;
+import com.kavi.rental.user.dto.mapper.UserDTOMapper;
 import com.kavi.rental.user.model.User;
 import com.kavi.rental.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController

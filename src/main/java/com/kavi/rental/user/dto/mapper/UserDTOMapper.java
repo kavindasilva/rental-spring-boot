@@ -1,5 +1,6 @@
-package com.kavi.rental.user.dto;
+package com.kavi.rental.user.dto.mapper;
 
+import com.kavi.rental.user.dto.UserDTO;
 import com.kavi.rental.user.model.User;
 
 public class UserDTOMapper {
