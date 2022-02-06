@@ -3,16 +3,20 @@ package com.kavi.rental.user.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String name;
+
     private String email;
     private String password;
     private String remember_token;
+
+    public static final String NAME = "name";
 
     public int getId() {
         return id;

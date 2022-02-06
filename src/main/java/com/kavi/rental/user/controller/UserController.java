@@ -36,6 +36,13 @@ public class UserController {
         return userDTOMapper.map(userService.getUser(id));
     }
 
+    @GetMapping("/user/n/{name}")
+    public UserDTO getUserByName(@PathVariable String name)
+    {
+        User user = userService.getByName(name);
+        return user != null ? userDTOMapper.map(user) : null;
+    }
+
     @PostMapping(path = "/user")
     public User addUser(@RequestBody User user)
     {
