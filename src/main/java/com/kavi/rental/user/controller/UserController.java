@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @RestController
 public class UserController {
     private UserService userService;
@@ -25,9 +27,10 @@ public class UserController {
     }
 
     @RequestMapping("/user")
-    public List<User> getAllUsers()
+    public List<UserDTO> getAllUsers()
     {
-        return userService.getUsers();
+        List<User> users = userService.getUsers();
+        return users.stream().map(user -> userDTOMapper.map(user)).collect(toList());
     }
 
     @GetMapping("/user/{id}")
@@ -36,7 +39,7 @@ public class UserController {
         return userDTOMapper.map(userService.getUser(id));
     }
 
-    @GetMapping("/user/n/{name}")
+    @GetMapping("/user/name/{name}")
     public UserDTO getUserByName(@PathVariable String name)
     {
         User user = userService.getByName(name);
@@ -48,5 +51,12 @@ public class UserController {
     {
         return userService.addUser(user);
     }
+
+//    @GetMapping("/logout")
+//    public String logout(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+//        JwtUtil.invalidateRelatedTokens(httpServletRequest);
+//        CookieUtil.clear(httpServletResponse, jwtTokenCookieName);
+//        return "redirect:/";
+//    }
 }
 
